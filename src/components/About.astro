@@ -1,0 +1,198 @@
+---
+const aboutImage = "/images/about.png";
+
+const features = [
+  {
+    icon: "favorite",
+    label: "Hecho con Amor",
+    color: "text-secondary",
+  },
+  {
+    icon: "bolt",
+    label: "Sabor Intenso",
+    color: "text-primary",
+  },
+  {
+    icon: "eco",
+    label: "Ingredientes Locales",
+    color: "text-tertiary",
+  },
+];
+---
+
+<section
+  id="about"
+  aria-labelledby="about-title"
+  class="relative overflow-hidden bg-secondary-fixed px-4 py-20 md:px-12 lg:px-20 lg:py-28"
+>
+  <!-- Decorative background -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-0 opacity-20"
+  >
+    <div
+      class="absolute -left-24 top-10 h-72 w-72 rounded-full bg-white blur-3xl"
+    >
+    </div>
+
+    <div
+      class="absolute -bottom-32 right-0 h-96 w-96 rounded-full bg-primary-fixed blur-3xl"
+    >
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div
+    class="relative z-10 mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20"
+  >
+    <!-- IMAGE -->
+    <div class="relative order-2 flex justify-center lg:order-1">
+      <!-- Decorative shape behind image -->
+      <div
+        aria-hidden="true"
+        class="absolute -bottom-5 -left-5 h-full w-full max-w-[430px] rounded-[2rem] border-2 border-black bg-primary-fixed"
+      >
+      </div>
+
+      <!-- Image card -->
+      <figure
+        class="relative w-full max-w-[430px] rotate-[-2deg] rounded-[2rem] border-2 border-black bg-surface p-3 shadow-[7px_7px_0_0_#000] transition-transform duration-300 hover:rotate-0 hover:-translate-y-1"
+      >
+        <div
+          class="overflow-hidden rounded-[1.25rem] border-2 border-black bg-white"
+        >
+          <img
+            src={aboutImage}
+            alt="Botanas Lokas - Nuestra historia"
+            loading="lazy"
+            decoding="async"
+            class="aspect-square w-full object-cover"
+          />
+        </div>
+
+        <!-- Sticker -->
+        <div
+          class="absolute -right-5 -top-5 flex h-20 w-20 rotate-12 items-center justify-center rounded-full border-2 border-black bg-secondary text-center font-display-lg text-sm font-black uppercase leading-tight text-white shadow-[4px_4px_0_0_#000]"
+          aria-hidden="true"
+        >
+          Hecho<br />
+          en México
+        </div>
+      </figure>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="order-1 lg:order-2">
+      <!-- Section eyebrow -->
+      <div class="mb-4 flex items-center gap-3">
+        <span class="h-1.5 w-12 rounded-full bg-secondary" aria-hidden="true"
+        ></span>
+
+        <span
+          class="font-body-md text-sm font-bold uppercase tracking-[0.16em] text-on-surface-variant"
+        >
+          Conoce Botanas Lokas
+        </span>
+      </div>
+
+      <!-- Heading -->
+      <h2
+        id="about-title"
+        class="max-w-2xl font-display-lg text-[clamp(2.5rem,5vw,4rem)] font-black leading-[0.95] tracking-tight text-on-surface"
+      >
+        Nuestra
+        <span class="text-primary"> Historia </span>
+      </h2>
+
+      <!-- Description Card -->
+      <div
+        class="relative mt-8 rounded-[1.5rem] border-2 border-black bg-surface p-6 shadow-[6px_6px_0_0_#000] md:p-8"
+      >
+        <!-- Small decorative mark -->
+        <div
+          aria-hidden="true"
+          class="absolute -right-3 -top-3 flex h-9 w-9 rotate-12 items-center justify-center rounded-full border-2 border-black bg-primary-fixed text-lg"
+        >
+          ✦
+        </div>
+
+        <div class="space-y-5">
+          <p
+            class="font-body-md text-base leading-7 text-on-surface-variant md:text-lg"
+          >
+            Botanas Lokas is a vibrant starter business born in the heart of
+            Mexico, dedicated to bringing the authentic, loud, and proud flavors
+            of traditional packed snacks to your fingertips.
+          </p>
+
+          <p
+            class="font-body-md text-base leading-7 text-on-surface-variant md:text-lg"
+          >
+            We believe every bite should feel like a fiesta. That's why we
+            source the best ingredients, from perfectly roasted peanuts to the
+            tangiest tamarind, creating mixes that celebrate our rich street
+            food culture.
+            <strong class="font-bold text-on-surface">
+              ¡Pruébalas todas!
+            </strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <ul
+        class="mt-8 grid gap-3 sm:grid-cols-3"
+        aria-label="Características de Botanas Lokas"
+      >
+        {
+          features.map((feature) => (
+            <li>
+              <div class="flex h-full items-center gap-3 rounded-xl border-2 border-black bg-surface px-4 py-3 shadow-[3px_3px_0_0_#000] transition-transform duration-200 hover:-translate-y-1">
+                <span
+                  class={`material-symbols-outlined shrink-0 ${feature.color}`}
+                  style="font-variation-settings: 'FILL' 1;"
+                  aria-hidden="true"
+                >
+                  {feature.icon}
+                </span>
+
+                <span class="font-body-md text-sm font-bold leading-tight text-on-surface">
+                  {feature.label}
+                </span>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Supporting statement -->
+      <div class="mt-7 flex items-start gap-3">
+        <span class="mt-1 text-2xl" aria-hidden="true"> 🌶️ </span>
+
+        <p
+          class="max-w-xl font-body-md text-sm leading-6 text-on-surface-variant md:text-base"
+        >
+          Una mezcla de tradición, sabor y ese toque atrevido que convierte cada
+          botana en una pequeña fiesta.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom decorative divider -->
+  <div
+    aria-hidden="true"
+    class="absolute bottom-0 left-0 h-5 w-full overflow-hidden"
+  >
+    <div class="wavy-divider h-full bg-secondary-fixed"></div>
+  </div>
+</section>
+
+<style>
+  .wavy-divider {
+    width: 100%;
+    height: 20px;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q 25 20, 50 10 T 100 10' fill='none' stroke='%23000' stroke-width='4'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+  }
+</style>

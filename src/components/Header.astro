@@ -1,40 +1,287 @@
-<header
-  class="sticky top-0 z-50 flex w-full items-center justify-between
-           border-b-4 border-black bg-surface px-4 py-4
-           shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]
-           md:px-20"
->
-  <div class="flex items-center gap-4">
-    <img
-      src="/images/logo.webp"
-      alt="Botanas Lokas"
-      class="h-12 w-auto rounded-full bg-primary-fixed"
-    />
+---
+const navItems = [
+  { href: "/", label: "Inicio" },
+  { href: "#snacks", label: "Botanas" },
+  { href: "#about", label: "Nuestra historia" },
+];
+---
 
-    <span
-      class="hidden font-display-lg text-headline-lg
-                   font-black text-secondary md:block"
-    >
-      Botanas Lokas
-    </span>
+<header class="site-header">
+  <div class="paper-cutouts" aria-hidden="true">
+    <i></i><i></i><i></i><i></i><i></i><i></i>
   </div>
-
-  <nav class="hidden gap-8 md:flex">
-    <a href="/" class="text-primary font-bold"> Inicio </a>
-
-    <a href="#snacks" class="text-on-surface hover:text-secondary">
-      Nuestras Botanas
+  <div class="header-inner">
+    <a class="brand" href="/" aria-label="Botanas Lokas, inicio">
+      <span class="brand-stamp" aria-hidden="true"
+        ><svg viewBox="0 0 48 48" fill="none"
+          ><path
+            d="M32 9c4-3 8-1 9 1-5 1-8 4-9 8"
+            stroke="currentColor"
+            stroke-width="3"
+            stroke-linecap="round"></path><path
+            d="M31 14c8 4 9 13 4 21-5 8-15 10-22 6 1-8 8-20 18-27Z"
+            fill="currentColor"></path><circle
+            cx="20"
+            cy="29"
+            r="2"
+            fill="#ffe16d"></circle></svg
+        ></span
+      >
+      <span class="brand-name">Botanas <em>Lokas</em></span>
     </a>
-
-    <a href="#about" class="text-on-surface hover:text-secondary"> Nosotros </a>
-  </nav>
-
-  <a
-    href="#snacks"
-    class="rounded-full border-2 border-black bg-secondary
-               px-6 py-2 font-bold text-white
-               shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]"
-  >
-    Ordenar
-  </a>
+    <nav class="desktop-nav" aria-label="Navegación principal">
+      {
+        navItems.map((item, index) => (
+          <a href={item.href} class:list={{ active: index === 0 }}>
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <a class="order-button" href="#snacks"
+      ><span class="material-symbols-outlined" aria-hidden="true"
+        >local_fire_department</span
+      ><span>Ordenar</span></a
+    >
+    <details class="mobile-menu">
+      <summary aria-label="Abrir menú de navegación"
+        ><span></span><span></span><span></span></summary
+      ><nav aria-label="Navegación móvil">
+        {navItems.map((item) => <a href={item.href}>{item.label}</a>)}<a
+          class="mobile-order"
+          href="#snacks">¡Se me antojó!</a
+        >
+      </nav>
+    </details>
+  </div>
 </header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 4px solid #1c1b1b;
+    background: #fcf9f8;
+    box-shadow: 0 5px 0 #1c1b1b;
+  }
+  .header-inner {
+    display: flex;
+    min-height: 76px;
+    max-width: 1440px;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 0 auto;
+    padding: 0.7rem clamp(1rem, 6vw, 5rem) 0.45rem;
+  }
+  .paper-cutouts {
+    display: flex;
+    height: 9px;
+    overflow: hidden;
+  }
+  .paper-cutouts i {
+    flex: 1;
+    min-width: 72px;
+    background: #e2007b;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+  }
+  .paper-cutouts i:nth-child(2n) {
+    background: #ffd700;
+  }
+  .paper-cutouts i:nth-child(3n) {
+    background: #75ff68;
+  }
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    color: #1c1b1b;
+    text-decoration: none;
+  }
+  .brand-stamp {
+    display: grid;
+    width: 48px;
+    height: 48px;
+    place-items: center;
+    border: 2px solid #1c1b1b;
+    border-radius: 50%;
+    background: #ffe16d;
+    color: #b50061;
+    box-shadow: 3px 3px 0 #1c1b1b;
+    transform: rotate(-5deg);
+    transition: transform 160ms ease;
+  }
+  .brand:hover .brand-stamp {
+    transform: rotate(5deg) scale(1.05);
+  }
+  .brand-stamp svg {
+    width: 34px;
+    height: 34px;
+  }
+  .brand-name {
+    font-family: "Anybody", sans-serif;
+    font-size: clamp(1.1rem, 2vw, 1.5rem);
+    font-weight: 900;
+    letter-spacing: -0.06em;
+    white-space: nowrap;
+  }
+  .brand-name em {
+    color: #b50061;
+    font-style: normal;
+  }
+  .desktop-nav {
+    display: flex;
+    gap: clamp(1rem, 2.5vw, 2.5rem);
+    margin-left: auto;
+  }
+  .desktop-nav a {
+    position: relative;
+    padding: 0.65rem 0;
+    color: #1c1b1b;
+    font-family: "Anybody", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .desktop-nav a::after {
+    position: absolute;
+    right: 0;
+    bottom: 0.27rem;
+    left: 0;
+    height: 3px;
+    background: #e2007b;
+    content: "";
+    transform: scaleX(0);
+    transition: transform 160ms ease;
+  }
+  .desktop-nav a:hover,
+  .desktop-nav a.active {
+    color: #705d00;
+  }
+  .desktop-nav a:hover::after,
+  .desktop-nav a.active::after {
+    transform: scaleX(1);
+  }
+  .order-button,
+  .mobile-order {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    border: 2px solid #1c1b1b;
+    background: #b50061;
+    color: #fff;
+    font-family: "Anybody", sans-serif;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-decoration: none;
+    box-shadow: 3px 3px 0 #1c1b1b;
+    transition:
+      transform 150ms ease,
+      box-shadow 150ms ease,
+      background 150ms ease;
+  }
+  .order-button {
+    margin-left: 0.5rem;
+    padding: 0.7rem 1.1rem;
+    border-radius: 999px;
+  }
+  .order-button:hover,
+  .mobile-order:hover {
+    background: #e2007b;
+    box-shadow: 0 0 0 #1c1b1b;
+    transform: translate(3px, 3px);
+  }
+  .mobile-menu {
+    display: none;
+    margin-left: auto;
+    position: relative;
+  }
+  .mobile-menu summary {
+    display: grid;
+    width: 44px;
+    height: 42px;
+    padding: 9px;
+    cursor: pointer;
+    place-content: center;
+    gap: 5px;
+    list-style: none;
+    border: 2px solid #1c1b1b;
+    background: #ffe16d;
+    box-shadow: 3px 3px 0 #1c1b1b;
+  }
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+  .mobile-menu summary span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #1c1b1b;
+    transition:
+      transform 160ms ease,
+      opacity 160ms ease;
+  }
+  .mobile-menu[open] summary span:first-child {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .mobile-menu[open] summary span:nth-child(2) {
+    opacity: 0;
+  }
+  .mobile-menu[open] summary span:last-child {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .mobile-menu nav {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    display: grid;
+    width: min(290px, calc(100vw - 2rem));
+    padding: 0.6rem;
+    border: 3px solid #1c1b1b;
+    background: #fcf9f8;
+    box-shadow: 5px 5px 0 #1c1b1b;
+  }
+  .mobile-menu nav > a:not(.mobile-order) {
+    padding: 0.85rem 0.75rem;
+    color: #1c1b1b;
+    font-family: "Anybody", sans-serif;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .mobile-menu nav > a:not(.mobile-order):hover {
+    background: #ffd9e2;
+  }
+  .mobile-order {
+    margin: 0.5rem 0.15rem 0.15rem;
+    padding: 0.75rem;
+  }
+  @media (max-width: 760px) {
+    .header-inner {
+      min-height: 68px;
+      padding-top: 0.55rem;
+    }
+    .brand-stamp {
+      width: 42px;
+      height: 42px;
+    }
+    .brand-stamp svg {
+      width: 30px;
+      height: 30px;
+    }
+    .desktop-nav,
+    .order-button {
+      display: none;
+    }
+    .mobile-menu {
+      display: block;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

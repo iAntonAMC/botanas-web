@@ -2,65 +2,163 @@
 import type { Snack } from "../data/snacks";
 
 interface Props {
-  snack: Snack;
+    snack: Snack;
+    variant?: "featured" | "compact";
 }
 
-const { snack } = Astro.props;
+const {
+    snack,
+    variant = "compact",
+} = Astro.props;
 ---
 
-<article
-  class="group overflow-hidden rounded-2xl
-           border-2 border-black bg-primary-fixed p-4"
->
-  <div class="relative">
-    <img
-      src={snack.image}
-      alt={snack.name}
-      class="aspect-square w-full rounded-xl
-                   object-cover"
-    />
-
-    {
-      snack.badge && (
-        <span
-          class="absolute left-3 top-3 rounded-full
-                       border-2 border-black bg-secondary
-                       px-3 py-1 text-sm font-bold text-white"
+{
+    variant === "featured" ? (
+        <article
+            class="group relative min-h-[380px] overflow-hidden rounded-2xl
+                   border-2 border-black bg-primary-container
+                   shadow-[4px_4px_0_0_#000]"
         >
-          {snack.badge}
-        </span>
-      )
-    }
-  </div>
+            <!-- Background Image -->
+            <img
+                src={snack.image}
+                alt={snack.name}
+                loading="lazy"
+                decoding="async"
+                class="absolute inset-0 h-full w-full object-cover
+                       transition-transform duration-500
+                       group-hover:scale-105"
+            />
 
-  <div class="mt-4">
-    <span class="text-sm font-bold uppercase text-secondary">
-      {snack.category}
-    </span>
+            <!-- Overlay -->
+            <div
+                class="absolute inset-0
+                       bg-gradient-to-t from-black/70
+                       via-black/10 to-transparent"
+            ></div>
 
-    <h3 class="mt-1 text-2xl font-black">
-      {snack.name}
-    </h3>
+            <!-- Top -->
+            <div
+                class="absolute left-5 right-5 top-5 z-10
+                       flex items-start justify-between gap-4"
+            >
+                <h3
+                    class="rounded-xl border-2 border-black bg-surface
+                           px-4 py-2 font-display-lg text-2xl
+                           font-black text-on-surface
+                           shadow-[3px_3px_0_0_#000]
+                           -rotate-2"
+                >
+                    {snack.name}
+                </h3>
 
-    <p class="mt-2 text-on-surface-variant">
-      {snack.description}
-    </p>
+                {
+                    snack.badge && (
+                        <span
+                            class="rounded-full border-2 border-black
+                                   bg-secondary px-4 py-2 text-sm
+                                   font-bold text-white
+                                   shadow-[3px_3px_0_0_#000]"
+                        >
+                            {snack.badge}
+                        </span>
+                    )
+                }
+            </div>
 
-    <div class="mt-4 flex items-center justify-between">
-      <strong class="text-2xl font-black">
-        ${snack.price}
-      </strong>
+            <!-- Bottom -->
+            <div
+                class="absolute bottom-5 left-5 right-5 z-10
+                       flex flex-col gap-4 md:flex-row
+                       md:items-end md:justify-between"
+            >
+                <p
+                    class="max-w-md rounded-xl border-2 border-black
+                           bg-white/90 p-4 text-sm leading-6
+                           text-on-surface"
+                >
+                    {snack.description}
+                </p>
 
-      <button
-        type="button"
-        class="rounded-xl border-2 border-black
-                       bg-secondary px-4 py-2
-                       font-bold text-white"
-        data-product-trigger
-        data-id={snack.id}
-      >
-        Ver Detalles
-      </button>
-    </div>
-  </div>
-</article>
+                <button
+                    type="button"
+                    data-product-trigger={snack.id}
+                    class="shrink-0 rounded-xl border-2 border-black
+                           bg-surface px-6 py-3 font-bold
+                           text-on-surface shadow-[3px_3px_0_0_#000]
+                           transition-all
+                           hover:-translate-y-1
+                           hover:bg-secondary
+                           hover:text-white
+                           active:translate-y-0"
+                >
+                    Ver Detalles
+                </button>
+            </div>
+        </article>
+    ) : (
+        <article
+            class="group flex min-h-[300px] flex-col overflow-hidden
+                   rounded-2xl border-2 border-black
+                   bg-surface p-5
+                   shadow-[4px_4px_0_0_#000]"
+        >
+            <!-- Category -->
+            <div class="flex justify-end">
+                <span
+                    class:list={[
+                        "rounded-md border-2 border-black px-3 py-1",
+                        "text-xs font-bold",
+                        snack.category === "Dulce"
+                            ? "bg-tertiary-fixed"
+                            : "bg-primary-fixed",
+                    ]}
+                >
+                    {snack.category}
+                </span>
+            </div>
+
+            <!-- Image -->
+            <div class="mt-5 flex justify-center">
+                <div
+                    class="overflow-hidden rounded-full border-4 border-black
+                           bg-surface"
+                >
+                    <img
+                        src={snack.image}
+                        alt={snack.name}
+                        loading="lazy"
+                        decoding="async"
+                        class="h-32 w-32 object-cover
+                               transition-transform duration-300
+                               group-hover:scale-105"
+                    />
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="mt-auto pt-5 text-center">
+                <h3
+                    class="font-display-lg text-2xl font-black
+                           text-on-surface"
+                >
+                    {snack.name}
+                </h3>
+
+                <button
+                    type="button"
+                    data-product-trigger={snack.id}
+                    class="mt-5 w-full rounded-lg border-2 border-black
+                           bg-primary py-3 font-bold text-white
+                           shadow-[3px_3px_0_0_#000]
+                           transition-all
+                           hover:-translate-y-1
+                           hover:bg-secondary
+                           active:translate-y-0"
+                >
+                    Ver Detalles
+                </button>
+            </div>
+        </article>
+    )
+}

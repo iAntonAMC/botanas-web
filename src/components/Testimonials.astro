@@ -1,0 +1,56 @@
+---
+const testimonials = [
+  { name: "Juan P.", city: "Ciudad de México", initial: "J", accent: "pink", quote: "¡Las mejores botanas! El Mix Fiesta es mi favorito para las reuniones. El picante es perfecto.", favorite: "Fan del Mix Fiesta" },
+  { name: "María G.", city: "Guadalajara", initial: "M", accent: "lime", quote: "Las Gomitas con Chamoy son de otro mundo. Me encanta que usen ingredientes locales.", favorite: "Team chamoy" },
+  { name: "Carlos R.", city: "Monterrey", initial: "C", accent: "yellow", quote: "Excelente servicio y sabor auténtico. Siempre pido el paquete para mis fiestas familiares.", favorite: "Cliente frecuente" },
+];
+---
+
+<section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+  <div class="confetti confetti-left" aria-hidden="true">✦</div>
+  <div class="confetti confetti-right" aria-hidden="true">✦</div>
+  <div class="testimonials-inner">
+    <header class="section-heading">
+      <p class="eyebrow">La fiesta se cuenta mejor entre amigos</p>
+      <h2 id="testimonials-title">Lo que dicen nuestros <span>fans</span><i aria-hidden="true">🌶</i></h2>
+      <p>Sabores que se comparten, antojos que se repiten.</p>
+    </header>
+
+    <div class="review-grid">
+      {testimonials.map((testimonial, index) => (
+        <article class:list={["review-card", testimonial.accent]}>
+          <div class="card-topline"><span>{testimonial.favorite}</span><span class="review-number">0{index + 1}</span></div>
+          <div class="stars" aria-label="Calificación de 5 de 5 estrellas">
+            {Array.from({ length: 5 }).map(() => <span aria-hidden="true">★</span>)}
+          </div>
+          <blockquote>“{testimonial.quote}”</blockquote>
+          <footer class="reviewer">
+            <span class="avatar" aria-hidden="true">{testimonial.initial}</span>
+            <span><strong>{testimonial.name}</strong><small>{testimonial.city}</small></span>
+            <span class="material-symbols-outlined verified" aria-label="Compra verificada">verified</span>
+          </footer>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testimonials { position: relative; overflow: hidden; padding: clamp(4.5rem, 9vw, 7rem) 1rem; background: #fcf9f8; color: #1c1b1b; }
+  .testimonials::before { position: absolute; inset: 0; opacity: 0.55; background-image: radial-gradient(#ffd9e2 1.5px, transparent 1.5px); background-size: 23px 23px; content: ""; pointer-events: none; }
+  .testimonials-inner { position: relative; z-index: 1; width: min(1280px, 100%); margin: 0 auto; }
+  .section-heading { max-width: 720px; margin: 0 auto clamp(2.4rem, 5vw, 4rem); text-align: center; }
+  .eyebrow { display: inline-block; margin: 0 0 0.7rem; padding: 0.42rem 0.75rem; border: 2px solid #1c1b1b; border-radius: 999px; background: #75ff68; box-shadow: 2px 2px 0 #1c1b1b; font-family: "Anybody", sans-serif; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; transform: rotate(-1.5deg); }
+  h2 { position: relative; margin: 0; font-family: "Anybody", sans-serif; font-size: clamp(2.5rem, 5.4vw, 4.7rem); font-weight: 900; letter-spacing: -0.07em; line-height: 0.94; text-wrap: balance; } h2 span { color: #b50061; text-shadow: 2px 2px 0 #1c1b1b; } h2 i { display: inline-block; margin-left: 0.14em; font-size: 0.5em; font-style: normal; transform: rotate(20deg) translateY(-1em); }
+  .section-heading > p:last-child { margin: 1rem 0 0; color: #4d4732; font-size: 1.05rem; }
+  .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(1rem, 2.2vw, 1.65rem); align-items: stretch; }
+  .review-card { display: flex; min-height: 316px; flex-direction: column; padding: 1.35rem; border: 3px solid #1c1b1b; border-radius: 1.15rem; box-shadow: 6px 6px 0 #1c1b1b; transition: transform 180ms ease, box-shadow 180ms ease; } .review-card:hover { box-shadow: 8px 10px 0 #1c1b1b; transform: translate(-2px, -5px) rotate(-0.5deg); }
+  .review-card.pink { background: #ffd9e2; } .review-card.lime { background: #75ff68; transform: rotate(1deg); } .review-card.yellow { background: #ffe16d; transform: rotate(-1deg); } .review-card.lime:hover { transform: translate(-2px, -5px) rotate(0.5deg); } .review-card.yellow:hover { transform: translate(-2px, -5px) rotate(-1.5deg); }
+  .card-topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-family: "Anybody", sans-serif; font-size: 0.67rem; font-weight: 900; letter-spacing: 0.04em; text-transform: uppercase; } .card-topline > span:first-child { padding: 0.35rem 0.5rem; border: 1.5px solid #1c1b1b; border-radius: 999px; background: #fcf9f8; } .review-number { opacity: 0.55; }
+  .stars { display: flex; gap: 0.12rem; margin-top: 1.5rem; color: #b50061; font-size: 1.2rem; letter-spacing: 0.04em; text-shadow: 1px 1px 0 #1c1b1b; }
+  blockquote { flex: 1; margin: 1rem 0 1.35rem; font-size: 1.05rem; font-style: italic; font-weight: 600; line-height: 1.55; }
+  .reviewer { display: flex; align-items: center; gap: 0.7rem; padding-top: 1rem; border-top: 2px dashed rgba(28, 27, 27, 0.55); } .avatar { display: grid; width: 42px; height: 42px; flex: 0 0 auto; place-items: center; border: 2px solid #1c1b1b; border-radius: 50%; background: #fcf9f8; font-family: "Anybody", sans-serif; font-weight: 900; } .reviewer strong, .reviewer small { display: block; } .reviewer strong { font-family: "Anybody", sans-serif; font-size: 0.82rem; } .reviewer small { margin-top: 0.12rem; color: #4d4732; font-size: 0.75rem; } .verified { margin-left: auto; color: #006e0a; font-size: 1.15rem; font-variation-settings: "FILL" 1; }
+  .confetti { position: absolute; z-index: 0; color: #e2007b; font-size: clamp(5rem, 12vw, 12rem); line-height: 1; opacity: 0.28; } .confetti-left { top: 17%; left: -0.13em; transform: rotate(-18deg); } .confetti-right { right: -0.13em; bottom: 5%; color: #006e0a; transform: rotate(24deg); }
+  @media (max-width: 820px) { .review-grid { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; } .review-card { min-height: 0; } .review-card.lime, .review-card.yellow { transform: none; } .review-card:hover, .review-card.lime:hover, .review-card.yellow:hover { transform: translate(-2px, -4px); } }
+  @media (prefers-reduced-motion: reduce) { .review-card { transition-duration: 0.01ms; } }
+</style>

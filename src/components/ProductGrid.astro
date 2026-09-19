@@ -1,44 +1,105 @@
 ---
 import { snacks } from "../data/snacks";
 import ProductCard from "./ProductCard.astro";
+import ProductModal from "./ProductModal.astro";
+
+const featuredSnack = snacks.find((snack) => snack.featured);
+const regularSnacks = snacks.filter((snack) => !snack.featured);
 ---
 
-<section id="snacks" class="bg-surface px-4 py-20 md:px-20">
+<section
+  id="snacks"
+  aria-labelledby="snacks-title"
+  class="relative bg-surface px-4 py-20 md:px-12 lg:px-20 lg:py-28"
+>
   <div class="mx-auto max-w-7xl">
-    <div class="mb-16 text-center">
-      <h2 class="font-display-lg text-display-lg font-black">
+    <!-- Section Header -->
+    <header class="mb-12 text-center md:mb-16">
+      <h2
+        id="snacks-title"
+        class="font-display-lg text-[clamp(2.5rem,5vw,4rem)]
+                       font-black leading-none text-on-surface"
+      >
         Nuestras
-        <span class="text-secondary"> Delicias </span>
+        <span class="text-secondary">Delicias</span>
       </h2>
 
-      <p class="mt-4 text-lg text-on-surface-variant">
+      <p
+        class="mt-4 font-body-md text-base
+                       text-on-surface-variant md:text-lg"
+      >
         Elige tu antojo favorito
       </p>
-    </div>
+    </header>
 
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-      {snacks.map((snack) => <ProductCard snack={snack} />)}
+    <!-- Bento Grid -->
+    <div class="grid grid-cols-1 gap-5 md:grid-cols-3 md:auto-rows-fr">
+      <!-- FEATURED -->
+      {
+        featuredSnack && (
+          <div class="md:col-span-2">
+            <ProductCard snack={featuredSnack} variant="featured" />
+          </div>
+        )
+      }
+
+      <!-- REGULAR PRODUCT -->
+      {
+        regularSnacks[0] && (
+          <ProductCard snack={regularSnacks[0]} variant="compact" />
+        )
+      }
+
+      <!-- SECOND REGULAR PRODUCT -->
+      {
+        regularSnacks[1] && (
+          <ProductCard snack={regularSnacks[1]} variant="compact" />
+        )
+      }
+
+      <!-- CUSTOM MIX -->
+      <article
+        class="md:col-span-2 flex min-h-[180px]
+                       flex-col justify-center gap-6
+                       rounded-2xl border-2 border-black
+                       bg-inverse-surface p-6
+                       shadow-[4px_4px_0_0_#000]
+                       md:flex-row md:items-center
+                       md:justify-between md:p-8"
+      >
+        <div>
+          <h3
+            class="font-display-lg text-3xl
+                               font-black text-white md:text-4xl"
+          >
+            ¿Buscas algo específico?
+          </h3>
+
+          <p
+            class="mt-2 font-body-md
+                               text-white/80"
+          >
+            Arma tu propio paquete para tu próxima fiesta.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="shrink-0 rounded-xl border-2 border-black
+                           bg-primary-container px-8 py-4
+                           font-display-lg text-xl font-black
+                           text-on-primary-container
+                           shadow-[4px_4px_0_0_#000]
+                           transition-all
+                           hover:-translate-y-1
+                           active:translate-y-0"
+        >
+          Crear Mix
+        </button>
+      </article>
     </div>
   </div>
-</section>
---- import {snacks} from "../data/snacks"; import ProductCard from "./ProductCard.astro";
----
 
-<section id="snacks" class="bg-surface px-4 py-20 md:px-20">
-  <div class="mx-auto max-w-7xl">
-    <div class="mb-16 text-center">
-      <h2 class="font-display-lg text-display-lg font-black">
-        Nuestras
-        <span class="text-secondary"> Delicias </span>
-      </h2>
-
-      <p class="mt-4 text-lg text-on-surface-variant">
-        Elige tu antojo favorito
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-      {snacks.map((snack) => <ProductCard snack={snack} />)}
-    </div>
-  </div>
+  <!-- SINGLE MODAL INSTANCE -->
+  <ProductModal products={snacks} />
 </section>

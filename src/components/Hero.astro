@@ -1,66 +1,460 @@
-<section
-  class="relative flex min-h-[80vh] w-full items-center
-           justify-center overflow-hidden
-           bg-primary-fixed px-4 py-16 md:px-20"
->
-  <div
-    class="absolute inset-0 opacity-20"
-    style="
-            background-image: radial-gradient(#1c1b1b 1px, transparent 1px);
-            background-size: 20px 20px;
-        "
-  >
+---
+const heroImage =
+  "https://lh3.googleusercontent.com/aida-public/AB6AXuCvxWleUYxfpzRRioQ6tgU7fXjVkrPXt3xqSA0Aq3Bm2YXNwKi13dUXCIupnez1Xk0CQlJsCMtqtPas3zDiEyxEjM0FqORL5MNdtlN_fPcMbz36UCbZGUVOICsze8mPIkSb-9wYZx63J49mVUDcad5_EzTTj9rf9g5MVBN8H468xxoBwQ3DbHd6j3tt4bbylkOV2Ewn38aAW_AB2grL8OzpUYCslz30-JjxrSE8ksAPXq_hNUTS-m7LNSKS4a0IjSeQ1eNNpMulLqw";
+---
+
+<section class="hero" aria-labelledby="hero-title">
+  <div class="hero-pattern" aria-hidden="true"></div>
+  <div class="sunburst" aria-hidden="true"></div>
+  <div class="papel-band" aria-hidden="true">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
   </div>
 
-  <div
-    class="relative z-10 mx-auto grid w-full max-w-7xl
-               grid-cols-1 items-center gap-6 md:grid-cols-2"
-  >
-    <div class="flex flex-col gap-6 text-center md:text-left">
-      <div
-        class="mx-auto inline-flex w-fit items-center gap-2
-                       rounded-full border-2 border-black
-                       bg-secondary px-4 py-2 text-white
-                       md:mx-0"
-      >
-        <span class="material-symbols-outlined"> local_fire_department </span>
-
-        <span class="font-bold uppercase"> Picosito y Sabroso </span>
-      </div>
-
-      <h1
-        class="font-display-lg text-display-lg font-black
-                       leading-none text-on-surface"
-      >
-        ¡El Sabor de
-        <span class="text-secondary">México</span>
-        en Tus Manos!
-      </h1>
-
-      <p
-        class="max-w-lg rounded-xl bg-white/80 p-4
-                       text-lg text-on-surface-variant"
-      >
-        Descubre la auténtica explosión de sabor con nuestras botanas
-        tradicionales.
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="flavor-tag">
+        <span class="material-symbols-outlined" aria-hidden="true"
+          >local_fire_department</span
+        > Picosito y sabroso
       </p>
-
-      <a
-        href="#snacks"
-        class="mx-auto w-fit rounded-xl border-4 border-black
-                       bg-primary px-8 py-4 text-center font-bold text-white
-                       md:mx-0"
-      >
-        Explorar Botanas
-      </a>
+      <h1 id="hero-title">
+        El sabor de <span>México</span><br />en tus manos.
+      </h1>
+      <p class="hero-description">
+        Botanas que traen el chilito, el crunch y toda la alegría de la fiesta a
+        cada mordida.
+      </p>
+      <div class="hero-actions">
+        <a class="primary-action" href="#snacks"
+          >Explorar botanas <span aria-hidden="true">→</span></a
+        >
+        <a class="story-link" href="#about"
+          >Conócenos <span aria-hidden="true">↗</span></a
+        >
+      </div>
+      <ul class="hero-notes" aria-label="Valores de Botanas Lokas">
+        <li><span aria-hidden="true">✦</span> Hecho con antojo</li>
+        <li><span aria-hidden="true">✦</span> Sabor bien mexicano</li>
+      </ul>
     </div>
 
-    <div>
-      <img
-        src="/images/hero.webp"
-        alt="Botanas Lokas"
-        class="w-full rounded-2xl border-2 border-black"
-      />
+    <div class="hero-visual">
+      <div class="burst-label">¡Puro<br />antojito!</div>
+      <div class="photo-frame">
+        <img
+          src={heroImage}
+          class="photo-frame"
+          alt="Mezcla de botanas mexicanas con chile y limón"
+        />
+      </div>
+      <div class="lime-sticker" aria-hidden="true">
+        <span class="material-symbols-outlined">star</span>
+      </div>
+      <div class="made-in-mexico">
+        <span aria-hidden="true">✦</span> Hecho en México
+      </div>
+      <div class="chile-sticker" aria-hidden="true">🌶</div>
     </div>
   </div>
+  <div class="wave-divider" aria-hidden="true"></div>
 </section>
+
+<style>
+  .hero {
+    isolation: isolate;
+    position: relative;
+    min-height: min(760px, calc(100vh - 88px));
+    overflow: hidden;
+    background: #ffe16d;
+    color: #1c1b1b;
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: minmax(0, 1.03fr) minmax(320px, 0.97fr);
+    align-items: center;
+    gap: clamp(2.5rem, 7vw, 7rem);
+    width: min(1280px, calc(100% - 2rem));
+    min-height: min(720px, calc(100vh - 88px));
+    margin: 0 auto;
+    padding: 5.25rem 0 5rem;
+  }
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.26;
+    background-image: radial-gradient(#1c1b1b 1.3px, transparent 1.3px);
+    background-size: 19px 19px;
+  }
+  .sunburst {
+    position: absolute;
+    z-index: -1;
+    right: -25rem;
+    bottom: -32rem;
+    width: 64rem;
+    height: 64rem;
+    border: 2px solid #1c1b1b;
+    border-radius: 50%;
+    opacity: 0.13;
+    background: repeating-conic-gradient(
+      #e2007b 0 8deg,
+      transparent 8deg 16deg
+    );
+  }
+  .papel-band {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    height: 24px;
+    overflow: hidden;
+  }
+  .papel-band i {
+    flex: 1;
+    min-width: 80px;
+    background: #e2007b;
+    clip-path: polygon(0 0, 50% 100%, 100% 0);
+  }
+  .papel-band i:nth-child(3n + 2) {
+    background: #75ff68;
+  }
+  .papel-band i:nth-child(3n) {
+    background: #ffd700;
+  }
+
+  .hero-copy {
+    position: relative;
+    z-index: 2;
+  }
+  .flavor-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+    margin: 0 0 1.15rem;
+    padding: 0.58rem 0.95rem;
+    border: 2px solid #1c1b1b;
+    border-radius: 999px;
+    background: #b50061;
+    color: #fff;
+    box-shadow: 3px 3px 0 #1c1b1b;
+    font-family: "Anybody", sans-serif;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.035em;
+    text-transform: uppercase;
+    transform: rotate(-2deg);
+  }
+  h1 {
+    max-width: 710px;
+    margin: 0;
+    font-family: "Anybody", sans-serif;
+    font-size: clamp(3.15rem, 6.3vw, 6rem);
+    font-weight: 900;
+    letter-spacing: -0.075em;
+    line-height: 0.88;
+    text-wrap: balance;
+  }
+  h1 span {
+    color: #b50061;
+    text-shadow: 3px 3px 0 #1c1b1b;
+  }
+  .hero-description {
+    max-width: 32rem;
+    margin: 1.7rem 0 1.65rem;
+    padding: 1rem 1.1rem;
+    border: 2px solid #1c1b1b;
+    border-radius: 0.85rem;
+    background: #fcf9f8;
+    box-shadow: 4px 4px 0 #1c1b1b;
+    font-size: clamp(1rem, 1.7vw, 1.15rem);
+    font-weight: 500;
+    line-height: 1.55;
+    transform: rotate(0.5deg);
+  }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+  }
+  .primary-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.35rem;
+    border: 3px solid #1c1b1b;
+    border-radius: 0.9rem;
+    background: #b50061;
+    color: #fff;
+    box-shadow: 5px 5px 0 #1c1b1b;
+    font-family: "Anybody", sans-serif;
+    font-weight: 800;
+    text-decoration: none;
+    transition:
+      transform 150ms ease,
+      box-shadow 150ms ease,
+      background 150ms ease;
+  }
+  .primary-action span {
+    font-size: 1.35em;
+    line-height: 0;
+  }
+  .primary-action:hover {
+    background: #e2007b;
+    box-shadow: 0 0 0 #1c1b1b;
+    transform: translate(5px, 5px);
+  }
+  .story-link {
+    color: #1c1b1b;
+    font-family: "Anybody", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: underline 2px #1c1b1b;
+    text-underline-offset: 5px;
+    transition: color 150ms ease;
+  }
+  .story-link:hover {
+    color: #b50061;
+  }
+  .hero-notes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem 1.35rem;
+    padding: 0;
+    margin: 1.7rem 0 0;
+    font-family: "Anybody", sans-serif;
+    font-size: 0.76rem;
+    font-weight: 800;
+    list-style: none;
+    text-transform: uppercase;
+  }
+  .hero-notes li {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .hero-notes span {
+    color: #b50061;
+    font-size: 1.15rem;
+  }
+
+  .hero-visual {
+    position: relative;
+    justify-self: end;
+    width: min(100%, 510px);
+    padding: 1.25rem 1.25rem 1.85rem;
+  }
+  .photo-frame {
+    position: relative;
+    overflow: hidden;
+    border: 4px solid #1c1b1b;
+    border-radius: 1.4rem;
+    background: #fcf9f8;
+    box-shadow: 8px 8px 0 #1c1b1b;
+    transform: rotate(2.6deg);
+  }
+  .photo-frame::after {
+    position: absolute;
+    inset: 11px;
+    border: 2px solid rgba(255, 255, 255, 0.75);
+    border-radius: 0.7rem;
+    content: "";
+    pointer-events: none;
+  }
+  .photo-frame img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 0.88;
+    object-fit: cover;
+  }
+  .burst-label {
+    position: absolute;
+    z-index: 2;
+    top: -0.7rem;
+    left: -1rem;
+    display: grid;
+    width: 105px;
+    height: 105px;
+    padding: 0.6rem;
+    place-items: center;
+    background: #e2007b;
+    color: #fff;
+    font-family: "Anybody", sans-serif;
+    font-size: 0.82rem;
+    font-weight: 900;
+    line-height: 1.05;
+    text-align: center;
+    text-transform: uppercase;
+    clip-path: polygon(
+      50% 0%,
+      60% 20%,
+      78% 6%,
+      78% 27%,
+      100% 25%,
+      83% 43%,
+      100% 56%,
+      79% 63%,
+      90% 84%,
+      67% 78%,
+      59% 100%,
+      48% 80%,
+      28% 95%,
+      29% 73%,
+      5% 73%,
+      22% 54%,
+      0 43%,
+      24% 35%,
+      12% 13%,
+      36% 21%
+    );
+    filter: drop-shadow(3px 3px 0 #1c1b1b);
+    transform: rotate(-12deg);
+  }
+  .lime-sticker {
+    position: absolute;
+    z-index: 2;
+    right: -1rem;
+    top: 17%;
+    display: grid;
+    width: 64px;
+    height: 64px;
+    place-items: center;
+    border: 3px solid #1c1b1b;
+    border-radius: 50%;
+    background: #75ff68;
+    box-shadow: 4px 4px 0 #1c1b1b;
+    transform: rotate(14deg);
+  }
+  .lime-sticker span {
+    font-size: 2rem;
+    color: #006e0a;
+    font-variation-settings: "FILL" 1;
+  }
+  .made-in-mexico {
+    position: absolute;
+    z-index: 3;
+    bottom: 0.4rem;
+    left: -0.4rem;
+    padding: 0.62rem 0.85rem;
+    border: 2px solid #1c1b1b;
+    border-radius: 0.5rem;
+    background: #fcf9f8;
+    box-shadow: 3px 3px 0 #1c1b1b;
+    color: #006e0a;
+    font-family: "Anybody", sans-serif;
+    font-size: 0.74rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    transform: rotate(-5deg);
+  }
+  .made-in-mexico span {
+    color: #e2007b;
+  }
+  .chile-sticker {
+    position: absolute;
+    z-index: 2;
+    right: 2rem;
+    bottom: -0.65rem;
+    display: grid;
+    width: 65px;
+    height: 65px;
+    place-items: center;
+    border: 3px solid #1c1b1b;
+    border-radius: 50%;
+    background: #ffd700;
+    box-shadow: 4px 4px 0 #1c1b1b;
+    font-size: 2rem;
+    transform: rotate(-20deg);
+  }
+  .wave-divider {
+    position: absolute;
+    z-index: 3;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 21px;
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 Q 25 20, 50 10 T 100 10' fill='none' stroke='%231c1b1b' stroke-width='4'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+  }
+
+  @media (max-width: 820px) {
+    .hero {
+      min-height: auto;
+    }
+    .hero-inner {
+      grid-template-columns: 1fr;
+      gap: 2.8rem;
+      width: min(100% - 2rem, 620px);
+      min-height: auto;
+      padding: 4.3rem 0 4rem;
+    }
+    .hero-copy {
+      text-align: center;
+    }
+    .flavor-tag {
+      margin-inline: auto;
+    }
+    .hero-description {
+      margin-right: auto;
+      margin-left: auto;
+      text-align: left;
+    }
+    .hero-actions {
+      justify-content: center;
+    }
+    .hero-notes {
+      justify-content: center;
+    }
+    .hero-visual {
+      justify-self: center;
+      width: min(100%, 490px);
+    }
+  }
+  @media (max-width: 480px) {
+    .hero-inner {
+      width: min(100% - 1.5rem, 620px);
+      padding-top: 3.6rem;
+    }
+    h1 {
+      font-size: clamp(2.85rem, 15vw, 4.2rem);
+    }
+    .hero-description {
+      font-size: 0.96rem;
+    }
+    .hero-actions {
+      gap: 1.1rem;
+    }
+    .primary-action {
+      width: 100%;
+    }
+    .photo-frame {
+      box-shadow: 6px 6px 0 #1c1b1b;
+    }
+    .burst-label {
+      left: -0.25rem;
+      width: 88px;
+      height: 88px;
+      font-size: 0.69rem;
+    }
+    .lime-sticker {
+      right: -0.25rem;
+      width: 54px;
+      height: 54px;
+    }
+    .chile-sticker {
+      right: 1rem;
+      width: 54px;
+      height: 54px;
+      font-size: 1.6rem;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
