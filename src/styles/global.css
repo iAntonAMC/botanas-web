@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Anybody", sans-serif;
+  --font-body: "Be Vietnam Pro", sans-serif;
+
+  --color-primary: #705d00;
+  --color-primary-fixed: #ffe16d;
+  --color-primary-container: #ffd700;
+
+  --color-secondary: #b50061;
+  --color-secondary-fixed: #ffd9e2;
+  --color-secondary-container: #e2007b;
+
+  --color-tertiary: #006e0a;
+  --color-tertiary-fixed: #75ff68;
+
+  --color-surface: #fcf9f8;
+  --color-on-surface: #1c1b1b;
+
+  --color-outline: #7e775f;
+
+  --text-display-lg: 48px;
+  --text-display-lg--line-height: 52px;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 900;
+}
+
+.sticker-effect {
+  border: 2px solid #000;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.wavy-divider {
+  background-image: url("data:image/svg+xml,%3Csvg ...");
+  background-repeat: repeat-x;
+  height: 20px;
+  width: 100%;
+}

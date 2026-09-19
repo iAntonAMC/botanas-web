@@ -1,0 +1,44 @@
+---
+import { snacks } from "../data/snacks";
+import ProductCard from "./ProductCard.astro";
+---
+
+<section id="snacks" class="bg-surface px-4 py-20 md:px-20">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-16 text-center">
+      <h2 class="font-display-lg text-display-lg font-black">
+        Nuestras
+        <span class="text-secondary"> Delicias </span>
+      </h2>
+
+      <p class="mt-4 text-lg text-on-surface-variant">
+        Elige tu antojo favorito
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {snacks.map((snack) => <ProductCard snack={snack} />)}
+    </div>
+  </div>
+</section>
+--- import {snacks} from "../data/snacks"; import ProductCard from "./ProductCard.astro";
+---
+
+<section id="snacks" class="bg-surface px-4 py-20 md:px-20">
+  <div class="mx-auto max-w-7xl">
+    <div class="mb-16 text-center">
+      <h2 class="font-display-lg text-display-lg font-black">
+        Nuestras
+        <span class="text-secondary"> Delicias </span>
+      </h2>
+
+      <p class="mt-4 text-lg text-on-surface-variant">
+        Elige tu antojo favorito
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
+      {snacks.map((snack) => <ProductCard snack={snack} />)}
+    </div>
+  </div>
+</section>
