@@ -1,4 +1,4 @@
-export type SnackCategory = "Especial" | "Limón" | "Dulce";
+export type SnackCategory = "Cacahuates" | "Gomitas" | "Caramelos";
 
 export interface Snack {
   id: string;
@@ -14,52 +14,53 @@ export interface Snack {
 
 export const snacks: Snack[] = [
   {
-    id: "mix-fiesta",
-    name: "Mix Fiesta",
+    id: "cacahuates-japoneses",
+    name: "Cacahuates Japoneses",
     price: 85,
-    category: "Especial",
+    category: "Cacahuates",
     badge: "Más Vendido",
     featured: true,
 
     description:
-      "La combinación perfecta de cacahuates, churritos y gomitas con mucho chilito.",
+      "Cacahuates japoneses crujientes con una cubierta sazonada y mucho sabor.",
 
     ingredients: [
       "Cacahuates",
-      "Churritos de maíz",
-      "Chile en polvo",
+      "Cacahuates",
+      "Harina de trigo",
+      "Salsa de soya",
+      "Aceite vegetal",
       "Sal",
-      "Limón deshidratado",
     ],
 
-    image: "/images/snacks/mix-fiesta.webp",
+    image: "/images/snacks/cacahuates-japoneses.webp",
   },
 
   {
-    id: "papas-lokas",
-    name: "Papas Lokas",
+    id: "cacahuates-hotnut",
+    name: "Cacahuates HotNut",
     price: 45,
-    category: "Limón",
+    category: "Cacahuates",
 
     description:
-      "Papas fritas artesanales con un toque secreto de chile y limón. ¡Crujientes y adictivas!",
+      "Cacahuates crujientes con un toque secreto de chile y limón. ¡Crujientes y adictivas!",
 
     ingredients: [
-      "Papa natural",
+      "Cacahuates",
       "Aceite vegetal",
       "Chile ancho",
       "Ácido cítrico",
       "Sal yodada",
     ],
 
-    image: "/images/snacks/papas-lokas.webp",
+    image: "/images/snacks/cacahuates-hotnut.webp",
   },
 
   {
-    id: "gomitas-chamoy",
-    name: "Gomitas con Chamoy",
+    id: "gomitas-viborita",
+    name: "Gomitas Viborita",
     price: 55,
-    category: "Dulce",
+    category: "Gomitas",
 
     description:
       "Dulces gomitas cubiertas con nuestro chamoy casero especial y una lluvia de chilito piquín.",
@@ -72,6 +73,60 @@ export const snacks: Snack[] = [
       "Sal",
     ],
 
-    image: "/images/snacks/gomitas-chamoy.webp",
+    image: "/images/snacks/viboritas.webp",
+  },
+
+  {
+    id: "gomitas-pandita",
+    name: "Gomitas Pandita",
+    price: 55,
+    category: "Gomitas",
+
+    description:
+      "Tiernas y deliciosas gomitas con forma de pandita, perfectas para disfrutar a cualquier hora.",
+
+    ingredients: [
+      "Gomitas de almidón",
+      "Azúcar",
+      "Jarabe de glucosa",
+      "Ácido cítrico",
+      "Colorantes artificiales",
+    ],
+
+    image: "/images/snacks/gomitas-pandita.webp",
+  },
+
+  {
+    id: "gomitas-aros-fruta",
+    name: "Gomitas Aros Fruta",
+    price: 55,
+    category: "Gomitas",
+
+    description:
+      "Coloridos aros de gomita con deliciosos sabores frutales y una textura suave y masticable.",
+
+    ingredients: [
+      "Gomitas de almidón",
+      "Azúcar",
+      "Jarabe de glucosa",
+      "Ácido cítrico",
+      "Sabores frutales",
+    ],
+
+    image: "/images/snacks/aros-fruta.webp",
+  },
+
+  {
+    id: "cacahuates-chile-ajo",
+    name: "Cacahuates con Chile y Ajo",
+    price: 50,
+    category: "Cacahuates",
+
+    description:
+      "Cacahuates crujientes sazonados con chile y ajo para un sabor intenso y delicioso.",
+
+    ingredients: ["Cacahuates", "Aceite vegetal", "Chile seco", "Ajo", "Sal"],
+
+    image: "/images/snacks/cacahuates-chile-ajo.webp",
   },
 ];
