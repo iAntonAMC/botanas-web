@@ -33,12 +33,12 @@ export const snacks: Snack[] = [
       "Sal",
     ],
 
-    image: "/images/snacks/cacahuates-japoneses.webp",
+    image: "/images/snacks/japoneses.png",
   },
 
   {
-    id: "cacahuates-hotnut",
-    name: "Cacahuates HotNut",
+    id: "cacahuates-espanoles",
+    name: "Cacahuates Españoles",
     price: 45,
     category: "Cacahuates",
 
@@ -53,27 +53,7 @@ export const snacks: Snack[] = [
       "Sal yodada",
     ],
 
-    image: "/images/snacks/cacahuates-hotnut.webp",
-  },
-
-  {
-    id: "gomitas-viborita",
-    name: "Gomitas Viborita",
-    price: 55,
-    category: "Gomitas",
-
-    description:
-      "Dulces gomitas cubiertas con nuestro chamoy casero especial y una lluvia de chilito piquín.",
-
-    ingredients: [
-      "Gomitas de almidón",
-      "Chamoy de la casa",
-      "Mezcla de chiles secos",
-      "Azúcar",
-      "Sal",
-    ],
-
-    image: "/images/snacks/viboritas.webp",
+    image: "/images/snacks/espanoles.png",
   },
 
   {
@@ -93,7 +73,7 @@ export const snacks: Snack[] = [
       "Colorantes artificiales",
     ],
 
-    image: "/images/snacks/gomitas-pandita.webp",
+    image: "/images/snacks/panditas.png",
   },
 
   {
@@ -114,19 +94,5 @@ export const snacks: Snack[] = [
     ],
 
     image: "/images/snacks/aros-fruta.webp",
-  },
-
-  {
-    id: "cacahuates-chile-ajo",
-    name: "Cacahuates con Chile y Ajo",
-    price: 50,
-    category: "Cacahuates",
-
-    description:
-      "Cacahuates crujientes sazonados con chile y ajo para un sabor intenso y delicioso.",
-
-    ingredients: ["Cacahuates", "Aceite vegetal", "Chile seco", "Ajo", "Sal"],
-
-    image: "/images/snacks/cacahuates-chile-ajo.webp",
   },
 ];
